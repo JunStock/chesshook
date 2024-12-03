@@ -2,13 +2,13 @@
 // @name        Chesshook
 // @include    	https://www.chess.com/*
 // @grant       none
-// @require     https://raw.githubusercontent.com/0mlml/chesshook/master/betafish.js
+// @require     https://raw.githubusercontent.com/JunStock/chesshook/master/betafish.js
 // @require     https://raw.githubusercontent.com/0mlml/vasara/main/vasara.js
 // @version     2.0
 // @author      0mlml
 // @description Chess.com Cheat Userscript
-// @updateURL   https://raw.githubusercontent.com/0mlml/chesshook/master/chesshook.user.js
-// @downloadURL https://raw.githubusercontent.com/0mlml/chesshook/master/chesshook.user.js
+// @updateURL   https://raw.githubusercontent.com/JunStock/chesshook/master/chesshook.user.js
+// @downloadURL https://raw.githubusercontent.com/JunStock/chesshook/master/chesshook.user.js
 // @run-at      document-start
 // ==/UserScript==
 
