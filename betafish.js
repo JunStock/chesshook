@@ -2086,19 +2086,8 @@ const betafishEngine = function() {
   function getBestMove() {
     SearchController.depth = MAXDEPTH;
     SearchPosition();
-
-    GenerateMoves();
-  const numMoves = GameBoard.moveListStart[GameBoard.ply + 1] - GameBoard.moveListStart[GameBoard.ply];
-  if (numMoves > 0) {
-      if (Math.random() < 0.2) { // 20% cơ hội chọn nước đi ngẫu nhiên trong top 3
-        const bestMoves = GameBoard.moveList.slice(GameBoard.moveListStart[GameBoard.ply], GameBoard.moveListStart[GameBoard.ply + 1]).sort((a, b) => GameBoard.moveScores[GameBoard.moveList.indexOf(b)] - GameBoard.moveScores[GameBoard.moveList.indexOf(a)]);
-        const randomIndex = Math.floor(Math.random() * Math.min(3, bestMoves.length)); // Chọn trong top 3
-        return bestMoves[randomIndex];
-    }
     return SearchController.best;
   }
-return NOMOVE;
-}
   
   /****************************\
    ============================
