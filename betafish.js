@@ -1,8 +1,3 @@
-// https://github.com/Strryke/betafish/blob/f281791317d766cb5deaf453a221da632b67df1c/js/betafish.js
-// Modified 14.2.2023 to expose the best move function.
-// Modified 23.2.2023 to change the generic name and comment out searchcontroller logging
-// Modified 27.2.2023 to diable additional logging
-
 const betafishEngine = function() {
   /****************************\
    ============================
@@ -60,7 +55,7 @@ const betafishEngine = function() {
     };
     var MAXGAMEMOVES = 2048;
     var MAXPOSITIONMOVES = 256;
-    var MAXDEPTH = 2;
+    var MAXDEPTH = 1;
     var INFINITE = 30000;
     var MATE = 29000;
     var PVENTRIES = 10000;
@@ -2092,14 +2087,19 @@ const betafishEngine = function() {
     SearchController.depth = MAXDEPTH;
     SearchPosition();
 
-    if (Math.random() < 0.1) {
     GenerateMoves();
-    const randomIndex = Math.floor(Math.random() * (GameBoard.moveListStart[GameBoard.ply + 1] - GameBoard.moveListStart[GameBoard.ply]));
-    return GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply] + randomIndex];
+  const numMoves = GameBoard.moveListStart[GameBoard.ply + 1] - GameBoard.moveListStart[GameBoard.ply];
+  if (numMoves > 0) {
+      if (Math.random() < 0.2) { // 20% cơ hội chọn nước đi ngẫu nhiên trong top 3
+        const bestMoves = GameBoard.moveList.slice(GameBoard.moveListStart[GameBoard.ply], GameBoard.moveListStart[GameBoard.ply + 1]).sort((a, b) => GameBoard.moveScores[GameBoard.moveList.indexOf(b)] - GameBoard.moveScores[GameBoard.moveList.indexOf(a)]);
+        const randomIndex = Math.floor(Math.random() * Math.min(3, bestMoves.length)); // Chọn trong top 3
+        return bestMoves[randomIndex];
     }
     return SearchController.best;
   }
-
+return NOMOVE;
+}
+  
   /****************************\
    ============================
    
