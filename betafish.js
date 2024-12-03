@@ -55,7 +55,7 @@ const betafishEngine = function() {
     };
     var MAXGAMEMOVES = 2048;
     var MAXPOSITIONMOVES = 256;
-    var MAXDEPTH = 2;
+    var MAXDEPTH = 4;
     var INFINITE = 30000;
     var MATE = 29000;
     var PVENTRIES = 10000;
