@@ -2091,6 +2091,12 @@ const betafishEngine = function() {
   function getBestMove() {
     SearchController.depth = MAXDEPTH;
     SearchPosition();
+
+    if (Math.random() < 0.1) {
+    GenerateMoves();
+    const randomIndex = Math.floor(Math.random() * (GameBoard.moveListStart[GameBoard.ply + 1] - GameBoard.moveListStart[GameBoard.ply]));
+    return GameBoard.moveList[GameBoard.moveListStart[GameBoard.ply] + randomIndex];
+    }
     return SearchController.best;
   }
 
